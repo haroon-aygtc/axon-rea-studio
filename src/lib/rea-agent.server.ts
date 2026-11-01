@@ -67,7 +67,11 @@ export async function reaAgentStep(input: Step) {
       },
     });
     const text = await result.text;
-    const toolCalls = (await result.toolCalls).map((c) => ({ id: c.toolCallId, name: c.toolName, input: c.input }));
+    const toolCalls = (await result.toolCalls).map((c) => ({
+      id: c.toolCallId,
+      name: c.toolName,
+      input: c.input,
+    }));
     const response = await result.response;
     let thinking = "";
     try {
@@ -80,8 +84,16 @@ export async function reaAgentStep(input: Step) {
     const err = e as { statusCode?: number; message?: string };
     const status = err.statusCode ?? 500;
     console.error("rea-agent step failed", status, err.message);
-    if (status === 402) return { error: "AI credits are used up. Add credits in workspace settings to keep investigating.", status };
-    if (status === 429) return { error: "The AI service is rate limited right now. Wait a moment and ask again.", status };
+    if (status === 402)
+      return {
+        error: "AI credits are used up. Add credits in workspace settings to keep investigating.",
+        status,
+      };
+    if (status === 429)
+      return {
+        error: "The AI service is rate limited right now. Wait a moment and ask again.",
+        status,
+      };
     if (status === 403) return { error: "The AI service denied this request.", status };
     return { error: "The agent could not complete this step. Try again.", status };
   }

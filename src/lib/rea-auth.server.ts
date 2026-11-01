@@ -11,15 +11,19 @@ export async function authenticateReaRequest(request: Request): Promise<boolean>
   if (!url || !key) return false;
   const client = createClient(url, key, {
     auth: { persistSession: false, autoRefreshToken: false, storage: undefined },
-    global: { fetch: (input, init) => {
-      const headers = new Headers(init?.headers);
-      if (headers.get("authorization") === `Bearer ${key}`) headers.delete("authorization");
-      headers.set("apikey", key);
-      return fetch(input, { ...init, headers });
-    } },
+    global: {
+      fetch: (input, init) => {
+        const headers = new Headers(init?.headers);
+        if (headers.get("authorization") === `Bearer ${key}`) headers.delete("authorization");
+        headers.set("apikey", key);
+        return fetch(input, { ...init, headers });
+      },
+    },
   });
   try {
     const { data, error } = await client.auth.getClaims(token);
     return !error && typeof data?.claims?.sub === "string";
-  } catch { return false; }
+  } catch {
+    return false;
+  }
 }
