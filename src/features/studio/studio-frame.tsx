@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 
 import { useAuth } from "@/features/auth/auth-provider";
@@ -13,7 +13,13 @@ export function StudioFrame() {
   const { openSignIn } = useAuth();
   const [consentOpen, setConsentOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const frameRef = useRef<HTMLIFrameElement>(null);
   const resolver = useRef<((ok: boolean) => void) | null>(null);
+
+  // The iframe may finish loading before hydration attaches onLoad.
+  useEffect(() => {
+    if (frameRef.current?.contentDocument?.readyState === "complete") setLoaded(true);
+  }, []);
 
   const requestConsent = useCallback(
     () =>
@@ -48,11 +54,11 @@ export function StudioFrame() {
         </div>
       )}
       <motion.iframe
+        ref={frameRef}
         src="/studio.html"
         title="REA Reverse Engineering Studio workspace"
         className="h-full w-full border-0 bg-background"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: loaded ? 1 : 0 }}
+        animate={{ opacity: loaded ? 1 : 0.001 }}
         transition={{ duration: 0.5 }}
         onLoad={() => setLoaded(true)}
       />
