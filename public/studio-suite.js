@@ -2670,14 +2670,12 @@
         matches = S.files.filter((f) => clean(f.path).toLowerCase().includes(filter));
       return {
         total_matching: matches.length,
-        files: matches
-          .slice(0, a.limit || 80)
-          .map((f) => ({
-            path: clean(f.path),
-            bytes: f.size,
-            role: layerOf(clean(f.path)),
-            sha: f.hash,
-          })),
+        files: matches.slice(0, a.limit || 80).map((f) => ({
+          path: clean(f.path),
+          bytes: f.size,
+          role: layerOf(clean(f.path)),
+          sha: f.hash,
+        })),
       };
     }
     if (name === "read_file") {
@@ -3566,7 +3564,6 @@
     }
   }
   function init() {
-    esc = escapeHtml;
     const disclosure = q("#launch p");
     if (disclosure)
       disclosure.textContent =
