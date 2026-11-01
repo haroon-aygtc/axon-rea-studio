@@ -13,7 +13,10 @@ export function SiteFooter() {
             Question-driven reverse engineering in your browser. Your files stay on your device.
           </p>
         </div>
-        <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground" aria-label="Footer">
+        <nav
+          className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground"
+          aria-label="Footer"
+        >
           {mainNav.map((item) => (
             <Link key={item.to} to={item.to} className="transition-colors hover:text-foreground">
               {item.label}

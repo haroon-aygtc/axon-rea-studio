@@ -15,6 +15,21 @@ import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as StudioRouteImport } from './routes/studio'
 import { Route as ApiReaAgentRouteImport } from './routes/api/rea-agent'
 import { Route as ApiReaFetchRouteImport } from './routes/api/rea-fetch'
+import { Route as StudioIndexRouteImport } from './routes/studio.index'
+import { Route as StudioAgentRouteImport } from './routes/studio.agent'
+import { Route as StudioAgentsRouteImport } from './routes/studio.agents'
+import { Route as StudioArchitectureRouteImport } from './routes/studio.architecture'
+import { Route as StudioClassicRouteImport } from './routes/studio.classic'
+import { Route as StudioDataFlowRouteImport } from './routes/studio.data-flow'
+import { Route as StudioDiscoveryRouteImport } from './routes/studio.discovery'
+import { Route as StudioOperationsRouteImport } from './routes/studio.operations'
+import { Route as StudioPracticeRouteImport } from './routes/studio.practice'
+import { Route as StudioPrdRouteImport } from './routes/studio.prd'
+import { Route as StudioReportsRouteImport } from './routes/studio.reports'
+import { Route as StudioSecondBrainRouteImport } from './routes/studio.second-brain'
+import { Route as StudioStackRouteImport } from './routes/studio.stack'
+import { Route as StudioStructureRouteImport } from './routes/studio.structure'
+import { Route as StudioUserFlowRouteImport } from './routes/studio.user-flow'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -46,31 +61,150 @@ const ApiReaFetchRoute = ApiReaFetchRouteImport.update({
   path: '/api/rea-fetch',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StudioIndexRoute = StudioIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => StudioRoute,
+} as any)
+const StudioAgentRoute = StudioAgentRouteImport.update({
+  id: '/agent',
+  path: '/agent',
+  getParentRoute: () => StudioRoute,
+} as any)
+const StudioAgentsRoute = StudioAgentsRouteImport.update({
+  id: '/agents',
+  path: '/agents',
+  getParentRoute: () => StudioRoute,
+} as any)
+const StudioArchitectureRoute = StudioArchitectureRouteImport.update({
+  id: '/architecture',
+  path: '/architecture',
+  getParentRoute: () => StudioRoute,
+} as any)
+const StudioClassicRoute = StudioClassicRouteImport.update({
+  id: '/classic',
+  path: '/classic',
+  getParentRoute: () => StudioRoute,
+} as any)
+const StudioDataFlowRoute = StudioDataFlowRouteImport.update({
+  id: '/data-flow',
+  path: '/data-flow',
+  getParentRoute: () => StudioRoute,
+} as any)
+const StudioDiscoveryRoute = StudioDiscoveryRouteImport.update({
+  id: '/discovery',
+  path: '/discovery',
+  getParentRoute: () => StudioRoute,
+} as any)
+const StudioOperationsRoute = StudioOperationsRouteImport.update({
+  id: '/operations',
+  path: '/operations',
+  getParentRoute: () => StudioRoute,
+} as any)
+const StudioPracticeRoute = StudioPracticeRouteImport.update({
+  id: '/practice',
+  path: '/practice',
+  getParentRoute: () => StudioRoute,
+} as any)
+const StudioPrdRoute = StudioPrdRouteImport.update({
+  id: '/prd',
+  path: '/prd',
+  getParentRoute: () => StudioRoute,
+} as any)
+const StudioReportsRoute = StudioReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => StudioRoute,
+} as any)
+const StudioSecondBrainRoute = StudioSecondBrainRouteImport.update({
+  id: '/second-brain',
+  path: '/second-brain',
+  getParentRoute: () => StudioRoute,
+} as any)
+const StudioStackRoute = StudioStackRouteImport.update({
+  id: '/stack',
+  path: '/stack',
+  getParentRoute: () => StudioRoute,
+} as any)
+const StudioStructureRoute = StudioStructureRouteImport.update({
+  id: '/structure',
+  path: '/structure',
+  getParentRoute: () => StudioRoute,
+} as any)
+const StudioUserFlowRoute = StudioUserFlowRouteImport.update({
+  id: '/user-flow',
+  path: '/user-flow',
+  getParentRoute: () => StudioRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
   '/how-it-works': typeof HowItWorksRoute
-  '/studio': typeof StudioRoute
+  '/studio': typeof StudioRouteWithChildren
   '/api/rea-agent': typeof ApiReaAgentRoute
   '/api/rea-fetch': typeof ApiReaFetchRoute
+  '/studio/agent': typeof StudioAgentRoute
+  '/studio/agents': typeof StudioAgentsRoute
+  '/studio/architecture': typeof StudioArchitectureRoute
+  '/studio/classic': typeof StudioClassicRoute
+  '/studio/data-flow': typeof StudioDataFlowRoute
+  '/studio/discovery': typeof StudioDiscoveryRoute
+  '/studio/operations': typeof StudioOperationsRoute
+  '/studio/practice': typeof StudioPracticeRoute
+  '/studio/prd': typeof StudioPrdRoute
+  '/studio/reports': typeof StudioReportsRoute
+  '/studio/second-brain': typeof StudioSecondBrainRoute
+  '/studio/stack': typeof StudioStackRoute
+  '/studio/structure': typeof StudioStructureRoute
+  '/studio/user-flow': typeof StudioUserFlowRoute
+  '/studio/': typeof StudioIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
   '/how-it-works': typeof HowItWorksRoute
-  '/studio': typeof StudioRoute
   '/api/rea-agent': typeof ApiReaAgentRoute
   '/api/rea-fetch': typeof ApiReaFetchRoute
+  '/studio/agent': typeof StudioAgentRoute
+  '/studio/agents': typeof StudioAgentsRoute
+  '/studio/architecture': typeof StudioArchitectureRoute
+  '/studio/classic': typeof StudioClassicRoute
+  '/studio/data-flow': typeof StudioDataFlowRoute
+  '/studio/discovery': typeof StudioDiscoveryRoute
+  '/studio/operations': typeof StudioOperationsRoute
+  '/studio/practice': typeof StudioPracticeRoute
+  '/studio/prd': typeof StudioPrdRoute
+  '/studio/reports': typeof StudioReportsRoute
+  '/studio/second-brain': typeof StudioSecondBrainRoute
+  '/studio/stack': typeof StudioStackRoute
+  '/studio/structure': typeof StudioStructureRoute
+  '/studio/user-flow': typeof StudioUserFlowRoute
+  '/studio': typeof StudioIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
   '/how-it-works': typeof HowItWorksRoute
-  '/studio': typeof StudioRoute
+  '/studio': typeof StudioRouteWithChildren
   '/api/rea-agent': typeof ApiReaAgentRoute
   '/api/rea-fetch': typeof ApiReaFetchRoute
+  '/studio/agent': typeof StudioAgentRoute
+  '/studio/agents': typeof StudioAgentsRoute
+  '/studio/architecture': typeof StudioArchitectureRoute
+  '/studio/classic': typeof StudioClassicRoute
+  '/studio/data-flow': typeof StudioDataFlowRoute
+  '/studio/discovery': typeof StudioDiscoveryRoute
+  '/studio/operations': typeof StudioOperationsRoute
+  '/studio/practice': typeof StudioPracticeRoute
+  '/studio/prd': typeof StudioPrdRoute
+  '/studio/reports': typeof StudioReportsRoute
+  '/studio/second-brain': typeof StudioSecondBrainRoute
+  '/studio/stack': typeof StudioStackRoute
+  '/studio/structure': typeof StudioStructureRoute
+  '/studio/user-flow': typeof StudioUserFlowRoute
+  '/studio/': typeof StudioIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,14 +215,43 @@ export interface FileRouteTypes {
     | '/studio'
     | '/api/rea-agent'
     | '/api/rea-fetch'
+    | '/studio/agent'
+    | '/studio/agents'
+    | '/studio/architecture'
+    | '/studio/classic'
+    | '/studio/data-flow'
+    | '/studio/discovery'
+    | '/studio/operations'
+    | '/studio/practice'
+    | '/studio/prd'
+    | '/studio/reports'
+    | '/studio/second-brain'
+    | '/studio/stack'
+    | '/studio/structure'
+    | '/studio/user-flow'
+    | '/studio/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/dashboard'
     | '/how-it-works'
-    | '/studio'
     | '/api/rea-agent'
     | '/api/rea-fetch'
+    | '/studio/agent'
+    | '/studio/agents'
+    | '/studio/architecture'
+    | '/studio/classic'
+    | '/studio/data-flow'
+    | '/studio/discovery'
+    | '/studio/operations'
+    | '/studio/practice'
+    | '/studio/prd'
+    | '/studio/reports'
+    | '/studio/second-brain'
+    | '/studio/stack'
+    | '/studio/structure'
+    | '/studio/user-flow'
+    | '/studio'
   id:
     | '__root__'
     | '/'
@@ -97,13 +260,28 @@ export interface FileRouteTypes {
     | '/studio'
     | '/api/rea-agent'
     | '/api/rea-fetch'
+    | '/studio/agent'
+    | '/studio/agents'
+    | '/studio/architecture'
+    | '/studio/classic'
+    | '/studio/data-flow'
+    | '/studio/discovery'
+    | '/studio/operations'
+    | '/studio/practice'
+    | '/studio/prd'
+    | '/studio/reports'
+    | '/studio/second-brain'
+    | '/studio/stack'
+    | '/studio/structure'
+    | '/studio/user-flow'
+    | '/studio/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DashboardRoute: typeof DashboardRoute
   HowItWorksRoute: typeof HowItWorksRoute
-  StudioRoute: typeof StudioRoute
+  StudioRoute: typeof StudioRouteWithChildren
   ApiReaAgentRoute: typeof ApiReaAgentRoute
   ApiReaFetchRoute: typeof ApiReaFetchRoute
 }
@@ -152,14 +330,158 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiReaFetchRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/studio/': {
+      id: '/studio/'
+      path: '/'
+      fullPath: '/studio/'
+      preLoaderRoute: typeof StudioIndexRouteImport
+      parentRoute: typeof StudioRoute
+    }
+    '/studio/agent': {
+      id: '/studio/agent'
+      path: '/agent'
+      fullPath: '/studio/agent'
+      preLoaderRoute: typeof StudioAgentRouteImport
+      parentRoute: typeof StudioRoute
+    }
+    '/studio/agents': {
+      id: '/studio/agents'
+      path: '/agents'
+      fullPath: '/studio/agents'
+      preLoaderRoute: typeof StudioAgentsRouteImport
+      parentRoute: typeof StudioRoute
+    }
+    '/studio/architecture': {
+      id: '/studio/architecture'
+      path: '/architecture'
+      fullPath: '/studio/architecture'
+      preLoaderRoute: typeof StudioArchitectureRouteImport
+      parentRoute: typeof StudioRoute
+    }
+    '/studio/classic': {
+      id: '/studio/classic'
+      path: '/classic'
+      fullPath: '/studio/classic'
+      preLoaderRoute: typeof StudioClassicRouteImport
+      parentRoute: typeof StudioRoute
+    }
+    '/studio/data-flow': {
+      id: '/studio/data-flow'
+      path: '/data-flow'
+      fullPath: '/studio/data-flow'
+      preLoaderRoute: typeof StudioDataFlowRouteImport
+      parentRoute: typeof StudioRoute
+    }
+    '/studio/discovery': {
+      id: '/studio/discovery'
+      path: '/discovery'
+      fullPath: '/studio/discovery'
+      preLoaderRoute: typeof StudioDiscoveryRouteImport
+      parentRoute: typeof StudioRoute
+    }
+    '/studio/operations': {
+      id: '/studio/operations'
+      path: '/operations'
+      fullPath: '/studio/operations'
+      preLoaderRoute: typeof StudioOperationsRouteImport
+      parentRoute: typeof StudioRoute
+    }
+    '/studio/practice': {
+      id: '/studio/practice'
+      path: '/practice'
+      fullPath: '/studio/practice'
+      preLoaderRoute: typeof StudioPracticeRouteImport
+      parentRoute: typeof StudioRoute
+    }
+    '/studio/prd': {
+      id: '/studio/prd'
+      path: '/prd'
+      fullPath: '/studio/prd'
+      preLoaderRoute: typeof StudioPrdRouteImport
+      parentRoute: typeof StudioRoute
+    }
+    '/studio/reports': {
+      id: '/studio/reports'
+      path: '/reports'
+      fullPath: '/studio/reports'
+      preLoaderRoute: typeof StudioReportsRouteImport
+      parentRoute: typeof StudioRoute
+    }
+    '/studio/second-brain': {
+      id: '/studio/second-brain'
+      path: '/second-brain'
+      fullPath: '/studio/second-brain'
+      preLoaderRoute: typeof StudioSecondBrainRouteImport
+      parentRoute: typeof StudioRoute
+    }
+    '/studio/stack': {
+      id: '/studio/stack'
+      path: '/stack'
+      fullPath: '/studio/stack'
+      preLoaderRoute: typeof StudioStackRouteImport
+      parentRoute: typeof StudioRoute
+    }
+    '/studio/structure': {
+      id: '/studio/structure'
+      path: '/structure'
+      fullPath: '/studio/structure'
+      preLoaderRoute: typeof StudioStructureRouteImport
+      parentRoute: typeof StudioRoute
+    }
+    '/studio/user-flow': {
+      id: '/studio/user-flow'
+      path: '/user-flow'
+      fullPath: '/studio/user-flow'
+      preLoaderRoute: typeof StudioUserFlowRouteImport
+      parentRoute: typeof StudioRoute
+    }
   }
 }
+
+interface StudioRouteChildren {
+  StudioAgentRoute: typeof StudioAgentRoute
+  StudioAgentsRoute: typeof StudioAgentsRoute
+  StudioArchitectureRoute: typeof StudioArchitectureRoute
+  StudioClassicRoute: typeof StudioClassicRoute
+  StudioDataFlowRoute: typeof StudioDataFlowRoute
+  StudioDiscoveryRoute: typeof StudioDiscoveryRoute
+  StudioOperationsRoute: typeof StudioOperationsRoute
+  StudioPracticeRoute: typeof StudioPracticeRoute
+  StudioPrdRoute: typeof StudioPrdRoute
+  StudioReportsRoute: typeof StudioReportsRoute
+  StudioSecondBrainRoute: typeof StudioSecondBrainRoute
+  StudioStackRoute: typeof StudioStackRoute
+  StudioStructureRoute: typeof StudioStructureRoute
+  StudioUserFlowRoute: typeof StudioUserFlowRoute
+  StudioIndexRoute: typeof StudioIndexRoute
+}
+
+const StudioRouteChildren: StudioRouteChildren = {
+  StudioAgentRoute: StudioAgentRoute,
+  StudioAgentsRoute: StudioAgentsRoute,
+  StudioArchitectureRoute: StudioArchitectureRoute,
+  StudioClassicRoute: StudioClassicRoute,
+  StudioDataFlowRoute: StudioDataFlowRoute,
+  StudioDiscoveryRoute: StudioDiscoveryRoute,
+  StudioOperationsRoute: StudioOperationsRoute,
+  StudioPracticeRoute: StudioPracticeRoute,
+  StudioPrdRoute: StudioPrdRoute,
+  StudioReportsRoute: StudioReportsRoute,
+  StudioSecondBrainRoute: StudioSecondBrainRoute,
+  StudioStackRoute: StudioStackRoute,
+  StudioStructureRoute: StudioStructureRoute,
+  StudioUserFlowRoute: StudioUserFlowRoute,
+  StudioIndexRoute: StudioIndexRoute,
+}
+
+const StudioRouteWithChildren =
+  StudioRoute._addFileChildren(StudioRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DashboardRoute: DashboardRoute,
   HowItWorksRoute: HowItWorksRoute,
-  StudioRoute: StudioRoute,
+  StudioRoute: StudioRouteWithChildren,
   ApiReaAgentRoute: ApiReaAgentRoute,
   ApiReaFetchRoute: ApiReaFetchRoute,
 }
