@@ -27,7 +27,7 @@ export function Hero() {
       <LazyScene
         scene={HeroCoreScene}
         props={{}}
-        className="absolute inset-0 -z-10 opacity-60 md:left-[38%] md:opacity-100"
+        className="absolute inset-0 -z-10 opacity-30 md:left-[42%] md:opacity-100"
       />
 
       <div className="mx-auto flex min-h-[calc(100svh-4rem)] max-w-7xl flex-col justify-center px-5 py-16 md:px-8">
