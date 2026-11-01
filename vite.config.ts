@@ -12,4 +12,19 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  vite: {
+    // Pre-bundle lazily imported libraries at startup. Discovering them mid-session
+    // re-optimizes deps and can leave two React copies in the page ("reading 'useState'").
+    optimizeDeps: {
+      include: [
+        "three",
+        "@react-three/fiber",
+        "@react-three/drei",
+        "motion/react",
+        "@radix-ui/react-dialog",
+        "@radix-ui/react-dropdown-menu",
+        "lucide-react",
+      ],
+    },
+  },
 });
