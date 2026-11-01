@@ -27,7 +27,9 @@ function Meter({ label, value }: { label: string; value: string | number }) {
   return (
     <span className="flex items-baseline gap-1.5 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
       {label}
-      <b className="text-sm font-medium normal-case tracking-normal text-foreground tabular-nums">{value}</b>
+      <b className="text-sm font-medium normal-case tracking-normal text-foreground tabular-nums">
+        {value}
+      </b>
     </span>
   );
 }

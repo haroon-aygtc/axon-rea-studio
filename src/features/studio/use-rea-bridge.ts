@@ -48,7 +48,8 @@ export function useReaBridge(handlers: BridgeHandlers) {
         }
         if (consentedTarget !== input.summary || consentedUser !== data.session.user.id) {
           const ok = await handlersRef.current.requestConsent();
-          if (!ok) throw new Error("AI sharing declined. Your files remain available for local analysis.");
+          if (!ok)
+            throw new Error("AI sharing declined. Your files remain available for local analysis.");
           consentedTarget = input.summary;
           consentedUser = data.session.user.id;
         }
@@ -64,7 +65,10 @@ export function useReaBridge(handlers: BridgeHandlers) {
         const result: unknown = await response.json();
         if (!response.ok) {
           const message =
-            typeof result === "object" && result && "error" in result && typeof result.error === "string"
+            typeof result === "object" &&
+            result &&
+            "error" in result &&
+            typeof result.error === "string"
               ? result.error
               : "REA request failed.";
           throw new Error(message);

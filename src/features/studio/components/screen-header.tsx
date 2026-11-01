@@ -36,5 +36,7 @@ export function ScreenHeader({ screen, description, actions }: ScreenHeaderProps
 
 /** Standard padded body for a studio screen. */
 export function ScreenBody({ children }: { children: ReactNode }) {
-  return <div className="mx-auto w-full max-w-7xl space-y-6 px-4 py-6 md:px-8 md:py-8">{children}</div>;
+  return (
+    <div className="mx-auto w-full max-w-7xl space-y-6 px-4 py-6 md:px-8 md:py-8">{children}</div>
+  );
 }

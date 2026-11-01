@@ -6,7 +6,10 @@ import { studioGroups } from "../screens";
 /** Grouped list of studio screens; used by the desktop sidebar and mobile sheet. */
 export function StudioNav({ onNavigate }: { onNavigate?: () => void }) {
   return (
-    <nav aria-label="Studio screens" className="flex h-full flex-col gap-6 overflow-y-auto px-3 py-5">
+    <nav
+      aria-label="Studio screens"
+      className="flex h-full flex-col gap-6 overflow-y-auto px-3 py-5"
+    >
       {studioGroups.map((group) => (
         <div key={group.label} className="space-y-1">
           <p className="px-3 pb-1 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground/70">

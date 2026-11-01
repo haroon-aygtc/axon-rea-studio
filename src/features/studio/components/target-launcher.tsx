@@ -48,7 +48,13 @@ function SourceButton({
 }
 
 /** Consent + source picker. Used inline on the scanner and inside the launcher dialog. */
-export function TargetPicker({ onStarted, className }: { onStarted?: () => void; className?: string }) {
+export function TargetPicker({
+  onStarted,
+  className,
+}: {
+  onStarted?: () => void;
+  className?: string;
+}) {
   const authorized = useStudio((s) => s.authorized);
   const setAuthorized = useStudio((s) => s.setAuthorized);
   const status = useStudio((s) => s.status);
@@ -92,10 +98,28 @@ export function TargetPicker({ onStarted, className }: { onStarted?: () => void;
       </label>
 
       <div className="grid gap-3 sm:grid-cols-2">
-        <SourceButton icon={FileArchive} title="Files or archive" hint="zip, apk, jar or any files" disabled={locked} onClick={() => fileRef.current?.click()} />
-        <SourceButton icon={FolderOpen} title="A folder" hint="Scan a whole project" disabled={locked} onClick={() => folderRef.current?.click()} />
+        <SourceButton
+          icon={FileArchive}
+          title="Files or archive"
+          hint="zip, apk, jar or any files"
+          disabled={locked}
+          onClick={() => fileRef.current?.click()}
+        />
+        <SourceButton
+          icon={FolderOpen}
+          title="A folder"
+          hint="Scan a whole project"
+          disabled={locked}
+          onClick={() => folderRef.current?.click()}
+        />
       </div>
-      <SourceButton icon={Sparkles} title="Try the sample" hint="Scan this studio's own code" disabled={locked} onClick={() => start(loadSample)} />
+      <SourceButton
+        icon={Sparkles}
+        title="Try the sample"
+        hint="Scan this studio's own code"
+        disabled={locked}
+        onClick={() => start(loadSample)}
+      />
 
       <form onSubmit={onSubmitUrl} className="flex gap-2">
         <div className="relative flex-1">
@@ -117,7 +141,9 @@ export function TargetPicker({ onStarted, className }: { onStarted?: () => void;
       </form>
 
       {!authorized && (
-        <p className="text-xs text-muted-foreground">Confirm permission above to choose a target.</p>
+        <p className="text-xs text-muted-foreground">
+          Confirm permission above to choose a target.
+        </p>
       )}
       {error && (
         <p role="alert" className="text-sm text-destructive">
@@ -126,7 +152,14 @@ export function TargetPicker({ onStarted, className }: { onStarted?: () => void;
       )}
 
       <input ref={fileRef} type="file" multiple hidden onChange={(e) => onPick(e.target.files)} />
-      <input ref={folderRef} type="file" multiple hidden {...folderAttrs} onChange={(e) => onPick(e.target.files)} />
+      <input
+        ref={folderRef}
+        type="file"
+        multiple
+        hidden
+        {...folderAttrs}
+        onChange={(e) => onPick(e.target.files)}
+      />
     </div>
   );
 }

@@ -41,12 +41,7 @@ export const DropdownMenuItem = React.forwardRef<
 DropdownMenuItem.displayName = "DropdownMenuItem";
 
 export function DropdownMenuLabel({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
-  return (
-    <div
-      className={cn("px-2.5 py-2 text-xs text-muted-foreground", className)}
-      {...props}
-    />
-  );
+  return <div className={cn("px-2.5 py-2 text-xs text-muted-foreground", className)} {...props} />;
 }
 
 export function DropdownMenuSeparator({ className }: { className?: string }) {

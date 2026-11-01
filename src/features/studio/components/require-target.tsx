@@ -24,10 +24,15 @@ export function RequireTarget({ children, hint }: RequireTargetProps) {
   const busy = status === "loading" || status === "running";
   return (
     <Card className="overflow-hidden">
-      <div className="absolute inset-0 bg-grid opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" aria-hidden />
+      <div
+        className="absolute inset-0 bg-grid opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]"
+        aria-hidden
+      />
       <div className="relative flex flex-col items-center gap-4 px-6 py-20 text-center">
         <div className="relative grid size-14 place-items-center rounded-2xl bg-primary/10 text-primary">
-          {busy && <span className="absolute inset-0 animate-pulse-ring rounded-2xl border border-primary" />}
+          {busy && (
+            <span className="absolute inset-0 animate-pulse-ring rounded-2xl border border-primary" />
+          )}
           <Radar className="size-6" />
         </div>
         <h2 className="text-xl font-semibold">{busy ? "Scanning target…" : "No target loaded"}</h2>

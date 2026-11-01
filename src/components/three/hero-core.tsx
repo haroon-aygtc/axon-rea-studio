@@ -114,7 +114,12 @@ function ScanSweep() {
   return (
     <mesh ref={ref} rotation={[Math.PI / 2, 0, 0]}>
       <ringGeometry args={[0.98, 1, 96]} />
-      <meshBasicMaterial color={scenePalette.ember} transparent opacity={0.8} side={THREE.DoubleSide} />
+      <meshBasicMaterial
+        color={scenePalette.ember}
+        transparent
+        opacity={0.8}
+        side={THREE.DoubleSide}
+      />
     </mesh>
   );
 }
@@ -128,7 +133,12 @@ function Core() {
     if (!g) return;
     g.rotation.y += dt * SPIN;
     g.rotation.x = THREE.MathUtils.damp(g.rotation.x, -state.pointer.y * PARALLAX, DAMPING, dt);
-    g.rotation.z = THREE.MathUtils.damp(g.rotation.z, state.pointer.x * PARALLAX * 0.5, DAMPING, dt);
+    g.rotation.z = THREE.MathUtils.damp(
+      g.rotation.z,
+      state.pointer.x * PARALLAX * 0.5,
+      DAMPING,
+      dt,
+    );
     if (shell.current) shell.current.rotation.y -= dt * SPIN * 2;
   });
 
@@ -152,9 +162,30 @@ function Core() {
         </mesh>
         <ScanSweep />
       </Float>
-      <DataRing radius={2.5} count={120} tilt={[0.35, 0, 0.15]} speed={0.35} color={scenePalette.ember} seed={3} />
-      <DataRing radius={3.1} count={160} tilt={[-0.5, 0, -0.25]} speed={-0.22} color={scenePalette.paper} seed={11} />
-      <DataRing radius={3.7} count={90} tilt={[1.2, 0, 0.4]} speed={0.15} color={scenePalette.rust} seed={19} />
+      <DataRing
+        radius={2.5}
+        count={120}
+        tilt={[0.35, 0, 0.15]}
+        speed={0.35}
+        color={scenePalette.ember}
+        seed={3}
+      />
+      <DataRing
+        radius={3.1}
+        count={160}
+        tilt={[-0.5, 0, -0.25]}
+        speed={-0.22}
+        color={scenePalette.paper}
+        seed={11}
+      />
+      <DataRing
+        radius={3.7}
+        count={90}
+        tilt={[1.2, 0, 0.4]}
+        speed={0.15}
+        color={scenePalette.rust}
+        seed={19}
+      />
     </group>
   );
 }

@@ -19,7 +19,10 @@ export function StudioLayout({ children }: { children: ReactNode }) {
         </div>
       </aside>
       <div className="relative flex min-w-0 flex-1 flex-col">
-        <div className="pointer-events-none absolute -right-40 -top-40 -z-10 size-[520px] rounded-full bg-rust/15 blur-[120px]" aria-hidden />
+        <div
+          className="pointer-events-none absolute -right-40 -top-40 -z-10 size-[520px] rounded-full bg-rust/15 blur-[120px]"
+          aria-hidden
+        />
         <StudioTopbar />
         <main className="min-w-0 flex-1">{children}</main>
       </div>

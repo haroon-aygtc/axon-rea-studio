@@ -34,14 +34,34 @@ function buildGraph(clusters: DiscoveryCluster[]) {
     const y = 1 - (ci / Math.max(1, clusters.length - 1)) * 2;
     const r = Math.sqrt(1 - y * y);
     const theta = golden * ci;
-    const hubPos = new THREE.Vector3(Math.cos(theta) * r, y * 0.8, Math.sin(theta) * r).multiplyScalar(3);
-    nodes.push({ id: cluster.kind, label: cluster.label, kind: cluster.kind, position: hubPos, hub: true });
+    const hubPos = new THREE.Vector3(
+      Math.cos(theta) * r,
+      y * 0.8,
+      Math.sin(theta) * r,
+    ).multiplyScalar(3);
+    nodes.push({
+      id: cluster.kind,
+      label: cluster.label,
+      kind: cluster.kind,
+      position: hubPos,
+      hub: true,
+    });
     segments.push(0, 0, 0, hubPos.x, hubPos.y, hubPos.z);
     cluster.items.forEach((item, ii) => {
       const a = (ii / cluster.items.length) * Math.PI * 2 + ci;
-      const offset = new THREE.Vector3(Math.cos(a), Math.sin(a * 1.7) * 0.6, Math.sin(a)).multiplyScalar(1.1);
+      const offset = new THREE.Vector3(
+        Math.cos(a),
+        Math.sin(a * 1.7) * 0.6,
+        Math.sin(a),
+      ).multiplyScalar(1.1);
       const pos = hubPos.clone().add(offset);
-      nodes.push({ id: `${cluster.kind}:${item}`, label: item, kind: cluster.kind, position: pos, hub: false });
+      nodes.push({
+        id: `${cluster.kind}:${item}`,
+        label: item,
+        kind: cluster.kind,
+        position: pos,
+        hub: false,
+      });
       segments.push(hubPos.x, hubPos.y, hubPos.z, pos.x, pos.y, pos.z);
     });
   });
@@ -76,7 +96,11 @@ function Node({
       }}
       onPointerOut={() => onHover(null)}
     >
-      {node.kind === "target" ? <icosahedronGeometry args={[size, 0]} /> : <sphereGeometry args={[size, 20, 20]} />}
+      {node.kind === "target" ? (
+        <icosahedronGeometry args={[size, 0]} />
+      ) : (
+        <sphereGeometry args={[size, 20, 20]} />
+      )}
       <meshStandardMaterial
         color={color}
         emissive={color}
@@ -85,7 +109,12 @@ function Node({
         flatShading={node.kind === "target"}
       />
       {(active || node.kind === "target" || node.hub) && (
-        <Html center distanceFactor={9} position={[0, size + 0.28, 0]} className="pointer-events-none">
+        <Html
+          center
+          distanceFactor={9}
+          position={[0, size + 0.28, 0]}
+          className="pointer-events-none"
+        >
           <span
             className={
               active
@@ -122,7 +151,10 @@ function Graph({ clusters }: { clusters: DiscoveryCluster[] }) {
 export default function DiscoveryGraph({ clusters }: { clusters: DiscoveryCluster[] }) {
   const [ready, setReady] = useState(false);
   return (
-    <div className="h-full w-full cursor-grab active:cursor-grabbing" data-scene-ready={ready || undefined}>
+    <div
+      className="h-full w-full cursor-grab active:cursor-grabbing"
+      data-scene-ready={ready || undefined}
+    >
       <Canvas
         dpr={[1, 1.75]}
         camera={{ position: [0, 1.5, 8.5], fov: 50 }}
