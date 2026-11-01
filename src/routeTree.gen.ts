@@ -15,6 +15,7 @@ import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as StudioRouteImport } from './routes/studio'
 import { Route as ApiReaAgentRouteImport } from './routes/api/rea-agent'
 import { Route as ApiReaFetchRouteImport } from './routes/api/rea-fetch'
+import { Route as StudioIndexRouteImport } from './routes/studio.index'
 import { Route as StudioAgentRouteImport } from './routes/studio.agent'
 import { Route as StudioAgentsRouteImport } from './routes/studio.agents'
 import { Route as StudioArchitectureRouteImport } from './routes/studio.architecture'
@@ -59,6 +60,11 @@ const ApiReaFetchRoute = ApiReaFetchRouteImport.update({
   id: '/api/rea-fetch',
   path: '/api/rea-fetch',
   getParentRoute: () => rootRouteImport,
+} as any)
+const StudioIndexRoute = StudioIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => StudioRoute,
 } as any)
 const StudioAgentRoute = StudioAgentRouteImport.update({
   id: '/agent',
@@ -152,12 +158,12 @@ export interface FileRoutesByFullPath {
   '/studio/stack': typeof StudioStackRoute
   '/studio/structure': typeof StudioStructureRoute
   '/studio/user-flow': typeof StudioUserFlowRoute
+  '/studio/': typeof StudioIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
   '/how-it-works': typeof HowItWorksRoute
-  '/studio': typeof StudioRouteWithChildren
   '/api/rea-agent': typeof ApiReaAgentRoute
   '/api/rea-fetch': typeof ApiReaFetchRoute
   '/studio/agent': typeof StudioAgentRoute
@@ -174,6 +180,7 @@ export interface FileRoutesByTo {
   '/studio/stack': typeof StudioStackRoute
   '/studio/structure': typeof StudioStructureRoute
   '/studio/user-flow': typeof StudioUserFlowRoute
+  '/studio': typeof StudioIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -197,6 +204,7 @@ export interface FileRoutesById {
   '/studio/stack': typeof StudioStackRoute
   '/studio/structure': typeof StudioStructureRoute
   '/studio/user-flow': typeof StudioUserFlowRoute
+  '/studio/': typeof StudioIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -221,12 +229,12 @@ export interface FileRouteTypes {
     | '/studio/stack'
     | '/studio/structure'
     | '/studio/user-flow'
+    | '/studio/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/dashboard'
     | '/how-it-works'
-    | '/studio'
     | '/api/rea-agent'
     | '/api/rea-fetch'
     | '/studio/agent'
@@ -243,6 +251,7 @@ export interface FileRouteTypes {
     | '/studio/stack'
     | '/studio/structure'
     | '/studio/user-flow'
+    | '/studio'
   id:
     | '__root__'
     | '/'
@@ -265,6 +274,7 @@ export interface FileRouteTypes {
     | '/studio/stack'
     | '/studio/structure'
     | '/studio/user-flow'
+    | '/studio/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -319,6 +329,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/api/rea-fetch'
       preLoaderRoute: typeof ApiReaFetchRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/studio/': {
+      id: '/studio/'
+      path: '/'
+      fullPath: '/studio/'
+      preLoaderRoute: typeof StudioIndexRouteImport
+      parentRoute: typeof StudioRoute
     }
     '/studio/agent': {
       id: '/studio/agent'
@@ -436,6 +453,7 @@ interface StudioRouteChildren {
   StudioStackRoute: typeof StudioStackRoute
   StudioStructureRoute: typeof StudioStructureRoute
   StudioUserFlowRoute: typeof StudioUserFlowRoute
+  StudioIndexRoute: typeof StudioIndexRoute
 }
 
 const StudioRouteChildren: StudioRouteChildren = {
@@ -453,6 +471,7 @@ const StudioRouteChildren: StudioRouteChildren = {
   StudioStackRoute: StudioStackRoute,
   StudioStructureRoute: StudioStructureRoute,
   StudioUserFlowRoute: StudioUserFlowRoute,
+  StudioIndexRoute: StudioIndexRoute,
 }
 
 const StudioRouteWithChildren =
