@@ -10,6 +10,8 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as StudioRouteImport } from './routes/studio'
 import { Route as ApiReaAgentRouteImport } from './routes/api/rea-agent'
 import { Route as ApiReaFetchRouteImport } from './routes/api/rea-fetch'
@@ -17,6 +19,16 @@ import { Route as ApiReaFetchRouteImport } from './routes/api/rea-fetch'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowItWorksRoute = HowItWorksRouteImport.update({
+  id: '/how-it-works',
+  path: '/how-it-works',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StudioRoute = StudioRouteImport.update({
@@ -37,12 +49,16 @@ const ApiReaFetchRoute = ApiReaFetchRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRoute
+  '/how-it-works': typeof HowItWorksRoute
   '/studio': typeof StudioRoute
   '/api/rea-agent': typeof ApiReaAgentRoute
   '/api/rea-fetch': typeof ApiReaFetchRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRoute
+  '/how-it-works': typeof HowItWorksRoute
   '/studio': typeof StudioRoute
   '/api/rea-agent': typeof ApiReaAgentRoute
   '/api/rea-fetch': typeof ApiReaFetchRoute
@@ -50,20 +66,43 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRoute
+  '/how-it-works': typeof HowItWorksRoute
   '/studio': typeof StudioRoute
   '/api/rea-agent': typeof ApiReaAgentRoute
   '/api/rea-fetch': typeof ApiReaFetchRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/studio' | '/api/rea-agent' | '/api/rea-fetch'
+  fullPaths:
+    | '/'
+    | '/dashboard'
+    | '/how-it-works'
+    | '/studio'
+    | '/api/rea-agent'
+    | '/api/rea-fetch'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/studio' | '/api/rea-agent' | '/api/rea-fetch'
-  id: '__root__' | '/' | '/studio' | '/api/rea-agent' | '/api/rea-fetch'
+  to:
+    | '/'
+    | '/dashboard'
+    | '/how-it-works'
+    | '/studio'
+    | '/api/rea-agent'
+    | '/api/rea-fetch'
+  id:
+    | '__root__'
+    | '/'
+    | '/dashboard'
+    | '/how-it-works'
+    | '/studio'
+    | '/api/rea-agent'
+    | '/api/rea-fetch'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DashboardRoute: typeof DashboardRoute
+  HowItWorksRoute: typeof HowItWorksRoute
   StudioRoute: typeof StudioRoute
   ApiReaAgentRoute: typeof ApiReaAgentRoute
   ApiReaFetchRoute: typeof ApiReaFetchRoute
@@ -76,6 +115,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-it-works': {
+      id: '/how-it-works'
+      path: '/how-it-works'
+      fullPath: '/how-it-works'
+      preLoaderRoute: typeof HowItWorksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/studio': {
@@ -104,6 +157,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DashboardRoute: DashboardRoute,
+  HowItWorksRoute: HowItWorksRoute,
   StudioRoute: StudioRoute,
   ApiReaAgentRoute: ApiReaAgentRoute,
   ApiReaFetchRoute: ApiReaFetchRoute,
