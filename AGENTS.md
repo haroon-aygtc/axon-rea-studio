@@ -1,5 +1,4 @@
 <!-- LOVABLE:BEGIN -->
-
 > [!IMPORTANT]
 > This project is connected to [Lovable](https://lovable.dev). Avoid rewriting
 > published git history — force pushing, or rebasing/amending/squashing commits
@@ -8,7 +7,6 @@
 >
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
-
 <!-- LOVABLE:END -->
 
 - The studio lives in public/studio.html (embedded by src/routes/index.tsx); extensions go in public/studio-suite.js/.css, which read the studio globals (S, running) instead of editing the original script. Why: keeps the uploaded app intact.
@@ -17,3 +15,4 @@
 - Practice uses isolated browser-side sessions and local challenge/history storage; expected answers are never included in agent requests. Why: evaluate the existing agent without leaking the answer key or claiming model fine-tuning.
 - The parent React shell provides a same-origin bridge for authenticated AI, explicit sharing consent and shared Zod tool validation; raw AI routes independently verify bearer claims. Why: keep the uploaded studio intact without leaving paid AI anonymously accessible.
 - Tool contracts live in src/lib/rea-contract.ts and are validated on both sides; browser pure safety helpers retain marked test boundaries in studio-suite.js. Why: catch boundary regressions without a disruptive rewrite of the original application.
+- Keep only UI dependencies actually referenced by the app; generated authentication modules and the managed server runtime must remain. Why: reduce orphan scaffolding without breaking platform integration.
