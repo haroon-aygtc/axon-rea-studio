@@ -81,6 +81,7 @@ export const capabilities: Capability[] = [
     title: "Practice arena",
     description: "Write challenges on your own code and grade the agent with private answer keys.",
     tag: "practice",
+    wide: true,
   },
 ];
 
