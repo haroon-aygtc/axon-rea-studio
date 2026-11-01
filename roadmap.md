@@ -10,3 +10,6 @@
 - [ ] Choose redistribution license: requires owner's legal/license choice.
 - [ ] Infrastructure-backed rate limiting: platform has no standard primitive; audit recommendations deferred per platform guidance.
 - [ ] Full typed scanner/view migration, run persistence and asset extraction: conflicts with preserving the uploaded app; needs approval to replace that architecture.
+
+- [x] React shell: landing with 3D hero and discovery map, studio workspace frame, dashboard, how-it-works, shared sign-in.
+- [ ] Port studio screens (scanner, agent, practice, reports) to React one by one: next rounds, per agreed scope.
