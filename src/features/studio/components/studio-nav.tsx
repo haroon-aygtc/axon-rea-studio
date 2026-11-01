@@ -31,14 +31,13 @@ export function StudioNav({ onNavigate }: { onNavigate?: () => void }) {
         </div>
       ))}
       <div className="mt-auto border-t pt-4">
-        <a
-          href="/studio.html"
-          target="_blank"
-          rel="noreferrer"
+        <Link
+          to="/studio/classic"
+          onClick={onNavigate}
           className="flex items-center gap-3 rounded-xl px-3 py-2 text-xs text-muted-foreground transition-colors hover:text-foreground"
         >
           <History className="size-4" /> Classic studio
-        </a>
+        </Link>
       </div>
     </nav>
   );
