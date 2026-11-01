@@ -17,7 +17,7 @@ type Provider = "google" | "lovable";
 
 interface SignInDialogProps {
   open: boolean;
-  reason?: string;
+  reason?: string | undefined;
   onOpenChange: (open: boolean) => void;
 }
 
