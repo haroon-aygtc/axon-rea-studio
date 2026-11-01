@@ -19,3 +19,4 @@
 - The parent React shell provides a same-origin bridge for authenticated AI, explicit sharing consent and shared Zod tool validation; raw AI routes independently verify bearer claims. Why: keep the uploaded studio intact without leaving paid AI anonymously accessible.
 - Tool contracts live in src/lib/rea-contract.ts and are validated on both sides; browser pure safety helpers retain marked test boundaries in studio-suite.js. Why: catch boundary regressions without a disruptive rewrite of the original application.
 - Keep only UI dependencies actually referenced by the app; generated authentication modules and the managed server runtime must remain. Why: reduce orphan scaffolding without breaking platform integration.
+- Libraries imported lazily (three, R3F, drei, motion, Radix) are listed in vite.config.ts optimizeDeps.include. Why: mid-session dep re-optimization loads two React copies and blanks the preview.
