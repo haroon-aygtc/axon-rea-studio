@@ -6,7 +6,7 @@ import { CountUp } from "@/components/motion/count-up";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { TargetPicker } from "../components/target-picker-card";
+import { TargetPicker } from "../components/target-launcher";
 import { ScreenBody, ScreenHeader } from "../components/screen-header";
 import { PIPELINE_AGENTS } from "../engine/agents";
 import type { FindingKind, Target } from "../engine/types";
