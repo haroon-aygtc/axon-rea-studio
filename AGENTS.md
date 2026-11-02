@@ -9,7 +9,7 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
-- The studio lives in public/studio.html (embedded by src/routes/studio.tsx via features/studio/studio-frame); extensions go in public/studio-suite.js/.css, which read the studio globals (S, running) instead of editing the original script. Why: keeps the uploaded app intact until each screen is ported to React.
+- The React studio lives under /studio (src/routes/studio.*.tsx, ssr:false layout): scan engine in features/studio/engine, global scan state in features/studio/store.ts (zustand), one route + screens/<name>-screen.tsx per screen, pure analysis logic in features/studio/<area>/*.ts. The legacy public/studio.html stays untouched as /studio/classic. Why: typed, testable logic with a safe fallback.
 - React UI layout: src/components/{ui,layout,motion,brand,three} hold reusable pieces, src/features/<area> holds feature components and hooks, src/content holds static copy/data, routes only compose. Why: keeps pages thin and pieces reusable.
 - three.js scenes are lazy modules behind ClientOnly (components/three/lazy-scene.tsx) and read colors from three/palette.ts mirroring the CSS tokens. Why: three must not load during SSR and WebGL cannot read oklch tokens.
 - Sign-in state and the sign-in dialog live in features/auth/auth-provider (root); the studio bridge asks it for sign-in and a React consent dialog. Why: one session source for every page and the embedded studio.
