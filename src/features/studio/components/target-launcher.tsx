@@ -34,7 +34,7 @@ function SourceButton({
       type="button"
       disabled={disabled}
       onClick={onClick}
-      className="group flex items-center gap-4 rounded-xl border bg-surface/60 p-4 text-left transition-all hover:border-primary/50 hover:bg-accent/30 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-border disabled:hover:bg-surface/60"
+      className="group flex w-full items-center gap-4 rounded-xl border bg-surface/60 p-4 text-left transition-all hover:border-primary/50 hover:bg-accent/30 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-border disabled:hover:bg-surface/60"
     >
       <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary transition-transform group-hover:scale-110 group-disabled:group-hover:scale-100">
         <Icon className="size-5" />
