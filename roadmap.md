@@ -15,8 +15,8 @@
 - [ ] Port studio screens (scanner, agent, practice, reports) to React one by one: next rounds, per agreed scope.
 
 ## Studio React rebuild
-- [ ] Engine: typed scanner/pipeline + global store (port of studio.html core).
-- [ ] Studio shell: layout, sidebar, meters, target launcher, one route per screen.
+- [x] Engine: typed scanner/pipeline + global store (port of studio.html core).
+- [x] Studio shell: layout, sidebar, meters, target launcher, one route per screen.
 - [ ] Analysis + screens: PRD, user flow, data flow, structure, stack, architecture, reports/export.
 - [ ] Agent + practice screens in React (port runTool / practice, tests on TS modules).
 - [ ] Visual screens: operations floor, discovery map, second brain, all agents.
